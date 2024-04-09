@@ -59,6 +59,29 @@ def load_env(label, headless=False):
     Cfg.domain_rand.randomize_joint_friction = False
     Cfg.domain_rand.randomize_com_displacement = False
 
+
+    #################################
+
+    # rough terrain only:
+    Cfg.terrain.terrain_smoothness = 0.005
+    Cfg.terrain.measure_heights = True
+    # 1mx1.6m rectangle (without center line)
+    Cfg.terrain.measured_points_x = [-0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+    Cfg.terrain.measured_points_y = [-0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5]
+   # Cfg.terrain.selected = True  # select a unique terrain type and pass all arguments
+    #Cfg.terrain.terrain_kwargs = None # Dict of arguments for selected terrain
+    Cfg.terrain.min_init_terrain_level = 1
+    Cfg.terrain.max_init_terrain_level = 5  # starting curriculum state
+    Cfg.terrain.terrain_length = 8 #defaul = 8.
+    Cfg.terrain.terrain_width =8 # default = 8.
+
+    # terrain types: [smooth slope, rough slope, stairs up, stairs down, discrete]
+    Cfg.terrain.terrain_proportions = [0, 0, 0.5, 0.5, 0]
+
+
+   ##############################
+   
+
     Cfg.env.num_recording_envs = 1
     Cfg.env.num_envs = 5
     Cfg.terrain.num_rows = 5
@@ -114,7 +137,7 @@ def play_go2(headless=True):
     body_height_cmd = 0.0
     step_frequency_cmd = 3.0 #3.0
     # gait = torch.tensor(gaits["trotting"])
-    gait = torch.tensor(gaits["pronking"])
+    gait = torch.tensor(gaits["trotting"])
     footswing_height_cmd = 0.08
     pitch_cmd = 0.0
     roll_cmd = 0.0
