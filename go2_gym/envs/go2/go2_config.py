@@ -58,20 +58,22 @@ def config_go2(Cnfg: Union[Cfg, Meta]):
     _.orientation = -5.
     _.base_height = -30.
 
+
     _ = Cnfg.terrain
     _.mesh_type = 'trimesh'
     _.measure_heights = False
     _.terrain_noise_magnitude = 0.0
     _.teleport_robots = True
-    _.border_size = 50
+    _.border_size = 25  #50
 
-    _.terrain_proportions = [0,0,0.5,0.5,0] 
-    _.curriculum = True
+    _.terrain_proportions = [0, 0, 0, 1.0, 0]
+    _.curriculum = False
 
     _ = Cnfg.env
-    _.num_observations = 42
+    _.num_observations =10  ##-------------------------------------------------------------------------42
     _.observe_vel = False
-    _.num_envs = 100    #4096
+    _.num_envs = 40    ##--------------------------------------------------------------------------------4000
+
 
     _ = Cnfg.commands
     _.lin_vel_x = [-1.0, 1.0]

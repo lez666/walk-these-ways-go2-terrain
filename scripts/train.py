@@ -93,52 +93,18 @@ def train_go2(headless=True):
     Cfg.domain_rand.tile_height_curriculum = False
     Cfg.domain_rand.tile_height_update_interval = 1000000
     Cfg.domain_rand.tile_height_curriculum_step = 0.01
-    Cfg.terrain.border_size = 25  #0
-    # Default value = "trimesh"
-    Cfg.terrain.mesh_type = 'trimesh'  # "heightfield" # none, plane, heightfield or trimesh
-    Cfg.terrain.selected = True  # select a unique terrain type and pass all arguments
-    Cfg.terrain.terrain_kwargs = None # Dict of arguments for selected terrain
-    Cfg.terrain.terrain_smoothness = 0.005
-    Cfg.terrain.measure_heights = True
-    Cfg.terrain.measured_points_x = [-0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
-    Cfg.terrain.measured_points_y = [-0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5]
-    Cfg.terrain.terrain_proportions = [0 ,0 , 0.5 , 0.5 , 0 ] ######
-    Cfg.terrain.min_init_terrain_level = 1
-    Cfg.terrain.max_init_terrain_level = 5  # starting curriculum state
-
-    Cfg.terrain.num_cols = 5
-    Cfg.terrain.num_rows = 5
-    Cfg.terrain.terrain_width = 8 # 5.0
-    Cfg.terrain.terrain_length = 8 # 5.0
-    #Cfg.terrain.x_init_range = 0.2
-    #Cfg.terrain.y_init_range = 0.2
+    Cfg.terrain.mesh_type = "trimesh"
+    Cfg.terrain.num_cols = 15
+    Cfg.terrain.num_rows = 15
+    Cfg.terrain.terrain_width = 5.0
+    Cfg.terrain.terrain_length = 5.0
+    Cfg.terrain.x_init_range = 0.2
+    Cfg.terrain.y_init_range = 0.2
     Cfg.terrain.teleport_thresh = 0.3
-    Cfg.terrain.teleport_robots = False   #F
+    Cfg.terrain.teleport_robots = False
     Cfg.terrain.center_robots = True
-    Cfg.terrain.center_span = 4   #4
+    Cfg.terrain.center_span = 4
     Cfg.terrain.horizontal_scale = 0.10
-
-    #################################
-
-    # rough terrain only:
-   # Cfg.terrain.terrain_smoothness = 0.005
-   # Cfg.terrain.measure_heights = True
-    # 1mx1.6m rectangle (without center line)
-   # Cfg.terrain.measured_points_x = [-0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
-   # Cfg.terrain.measured_points_y = [-0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5]
-   # Cfg.terrain.selected = False  # select a unique terrain type and pass all arguments
-   # Cfg.terrain.terrain_kwargs = None # Dict of arguments for selected terrain
-    #Cfg.terrain.min_init_terrain_level = 1
-   # Cfg.terrain.max_init_terrain_level = 5  # starting curriculum state
-   # Cfg.terrain.terrain_length = 8 #defaul = 8.
-   # Cfg.terrain.terrain_width =8 # default = 8.
-   # Cfg.terrain.num_cols = 30
-   # Cfg.terrain.num_rows = 30
-  
-    # terrain types: [smooth slope, rough slope, stairs up, stairs down, discrete]
-   # Cfg.terrain.terrain_proportions = [0, 0, 0.5, 0.5, 0]
-
-   ##############################
     Cfg.rewards.use_terminal_foot_height = False
     Cfg.rewards.use_terminal_body_height = True
     Cfg.rewards.terminal_body_height = 0.05

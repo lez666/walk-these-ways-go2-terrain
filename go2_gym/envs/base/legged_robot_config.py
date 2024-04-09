@@ -5,17 +5,17 @@ from params_proto import PrefixProto, ParamsProto
 
 class Cfg(PrefixProto, cli=False):
     class env(PrefixProto, cli=False):
-        num_envs = 4096
-        num_observations = 235
-        num_scalar_observations = 42
+        num_envs = 40
+        num_observations = 12
+        num_scalar_observations = 8
         # if not None a privilige_obs_buf will be returned by step() (critic obs for assymetric training). None is returned otherwise
-        num_privileged_obs = 18
+        num_privileged_obs = 5
         privileged_future_horizon = 1
         num_actions = 12
         num_observation_history = 15
         env_spacing = 3.  # not used with heightfields/trimeshes
         send_timeouts = True  # send time out information to the algorithm
-        episode_length_s = 20  # episode length in seconds
+        episode_length_s = 100  # episode length in seconds
         observe_vel = True
         observe_only_ang_vel = False
         observe_only_lin_vel = False
@@ -63,7 +63,7 @@ class Cfg(PrefixProto, cli=False):
 
     class terrain(PrefixProto, cli=False):
         mesh_type = 'trimesh'  # "heightfield" # none, plane, heightfield or trimesh
-        horizontal_scale = 0.1  # [m] 0.1
+        horizontal_scale = 0.1  # [m]
         vertical_scale = 0.005  # [m]
         border_size = 0  # 25 # [m]
         curriculum = True
@@ -77,12 +77,12 @@ class Cfg(PrefixProto, cli=False):
         # 1mx1.6m rectangle (without center line)
         measured_points_x = [-0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
         measured_points_y = [-0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5]
-        selected = False  # select a unique terrain type and pass all arguments
+        selected = False  # select a unique terrain type and pass all arguments  FA
         terrain_kwargs = None  # Dict of arguments for selected terrain
         min_init_terrain_level = 0
         max_init_terrain_level = 5  # starting curriculum state
-        terrain_length = 0.5 #defaul = 8.
-        terrain_width = 0.5 # default = 8.
+        terrain_length = 8.
+        terrain_width = 8.
         num_rows = 10  # number of terrain rows (levels)
         num_cols = 20  # number of terrain cols (types)
         # terrain types: [smooth slope, rough slope, stairs up, stairs down, discrete]
@@ -416,6 +416,6 @@ class Cfg(PrefixProto, cli=False):
             rest_offset = 0.0  # [m]
             bounce_threshold_velocity = 0.5  # 0.5 [m/s]
             max_depenetration_velocity = 1.0
-            max_gpu_contact_pairs = 2 ** 23  # 2**24 -> needed for 8000 envs and more
+            max_gpu_contact_pairs = 2 ** 12  # 2**24 -> needed for 8000 envs and more
             default_buffer_size_multiplier = 5
-            contact_collection = 2  # 0: never, 1: last sub-step, 2: all sub-steps (default=2)
+            contact_collection = 0  # 0: never, 1: last sub-step, 2: all sub-steps (default=2)
