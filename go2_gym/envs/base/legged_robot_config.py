@@ -5,11 +5,11 @@ from params_proto import PrefixProto, ParamsProto
 
 class Cfg(PrefixProto, cli=False):
     class env(PrefixProto, cli=False):
-        num_envs = 40
-        num_observations = 12
-        num_scalar_observations = 8
+        num_envs = 4096
+        num_observations = 235
+        num_scalar_observations = 42
         # if not None a privilige_obs_buf will be returned by step() (critic obs for assymetric training). None is returned otherwise
-        num_privileged_obs = 5
+        num_privileged_obs = 18
         privileged_future_horizon = 1
         num_actions = 12
         num_observation_history = 15
@@ -416,6 +416,6 @@ class Cfg(PrefixProto, cli=False):
             rest_offset = 0.0  # [m]
             bounce_threshold_velocity = 0.5  # 0.5 [m/s]
             max_depenetration_velocity = 1.0
-            max_gpu_contact_pairs = 2 ** 12  # 2**24 -> needed for 8000 envs and more
+            max_gpu_contact_pairs = 2 ** 24  # 2**24 -> needed for 8000 envs and more
             default_buffer_size_multiplier = 5
             contact_collection = 0  # 0: never, 1: last sub-step, 2: all sub-steps (default=2)

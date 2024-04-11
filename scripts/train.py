@@ -96,8 +96,8 @@ def train_go2(headless=True):
     Cfg.terrain.mesh_type = "trimesh"
     Cfg.terrain.num_cols = 15
     Cfg.terrain.num_rows = 15
-    Cfg.terrain.terrain_width = 5.0
-    Cfg.terrain.terrain_length = 5.0
+    Cfg.terrain.terrain_width = 8
+    Cfg.terrain.terrain_length = 8
     Cfg.terrain.x_init_range = 0.2
     Cfg.terrain.y_init_range = 0.2
     Cfg.terrain.teleport_thresh = 0.3
@@ -212,7 +212,7 @@ def train_go2(headless=True):
     env = HistoryWrapper(env)
     gpu_id = 0
     runner = Runner(env, device=f"cuda:{gpu_id}")
-    runner.learn(num_learning_iterations=100000, init_at_random_ep_len=True, eval_freq=100)
+    runner.learn(num_learning_iterations=3000, init_at_random_ep_len=True, eval_freq=100)
 
 
 if __name__ == '__main__':
