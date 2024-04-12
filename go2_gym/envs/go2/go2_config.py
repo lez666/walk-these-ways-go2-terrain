@@ -8,7 +8,7 @@ from go2_gym.envs.base.legged_robot_config import Cfg
 def config_go2(Cnfg: Union[Cfg, Meta]):
     _ = Cnfg.init_state
 
-    _.pos = [0.0, 0.0, 0.34]  # x,y,z [m]
+    _.pos = [0.0, 0.0, 0.8]  # x,y,z [m]  _.pos = [0.0, 0.0, 0.34]  # x,y,z [m]
     _.default_joint_angles = {  # = target angles [rad] when action = 0.0
         'FL_hip_joint': 0.1,  # [rad]
         'RL_hip_joint': 0.1,  # [rad]
@@ -49,7 +49,7 @@ def config_go2(Cnfg: Union[Cfg, Meta]):
 
     _ = Cnfg.rewards
     _.soft_dof_pos_limit = 0.9
-    _.base_height_target = 0.34
+    _.base_height_target = 0.34 #_.base_height_target = 0.34
 
     _ = Cnfg.reward_scales
     _.torques = -0.0001
@@ -61,18 +61,18 @@ def config_go2(Cnfg: Union[Cfg, Meta]):
 
     _ = Cnfg.terrain
     _.mesh_type = 'trimesh'
-    _.measure_heights = False
+    _.measure_heights = False     
     _.terrain_noise_magnitude = 0.0
     _.teleport_robots = True
     _.border_size = 25  #50
 
-    _.terrain_proportions = [0, 0, 0, 1.0, 0]
+    _.terrain_proportions = [0, 1.0, 0, 0, 0]
     _.curriculum = True
 
     _ = Cnfg.env
     _.num_observations = 42  ##-------------------------------------------------------------------------42
     _.observe_vel = False
-    _.num_envs = 1000    ##--------------------------------------------------------------------------------4000
+    _.num_envs = 2000    ##--------------------------------------------------------------------------------4000
 
 
     _ = Cnfg.commands
@@ -98,7 +98,7 @@ def config_go2(Cnfg: Union[Cfg, Meta]):
     _.friction_range = [0.05, 4.5]
     _.randomize_restitution = True
     _.restitution_range = [0.0, 1.0]
-    _.restitution = 0.5  # default terrain restitution
+    #_.restitution = 0.5  # default terrain restitution
     _.randomize_com_displacement = True
     _.com_displacement_range = [-0.1, 0.1]
     _.randomize_motor_strength = True
