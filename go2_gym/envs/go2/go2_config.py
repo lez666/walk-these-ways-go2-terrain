@@ -67,7 +67,7 @@ def config_go2(Cnfg: Union[Cfg, Meta]):
     _.border_size = 25  #50
 
     _.terrain_proportions = [0, 0, 0, 1.0, 0]
-    _.curriculum = False
+    _.curriculum = True
 
     _ = Cnfg.env
     _.num_observations = 42  ##-------------------------------------------------------------------------42

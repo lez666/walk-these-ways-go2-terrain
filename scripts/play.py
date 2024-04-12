@@ -70,10 +70,10 @@ def load_env(label, headless=False):
     Cfg.terrain.measured_points_y = [-0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5]
    # Cfg.terrain.selected = True  # select a unique terrain type and pass all arguments
     #Cfg.terrain.terrain_kwargs = None # Dict of arguments for selected terrain
-    Cfg.terrain.min_init_terrain_level = 1
+    Cfg.terrain.min_init_terrain_level = 0
     Cfg.terrain.max_init_terrain_level = 5  # starting curriculum state
-    Cfg.terrain.terrain_length = 8 #defaul = 8.
-    Cfg.terrain.terrain_width =8 # default = 8.
+    Cfg.terrain.terrain_length = 4 #defaul = 8.
+    Cfg.terrain.terrain_width =4 # default = 8.
 
     # terrain types: [smooth slope, rough slope, stairs up, stairs down, discrete]
     Cfg.terrain.terrain_proportions = [0, 0, 0.5, 0.5, 0]
@@ -83,7 +83,7 @@ def load_env(label, headless=False):
    
 
     Cfg.env.num_recording_envs = 1
-    Cfg.env.num_envs = 5
+    Cfg.env.num_envs = 10
     Cfg.terrain.num_rows = 5
     Cfg.terrain.num_cols = 5
     Cfg.terrain.border_size = 0
@@ -121,6 +121,7 @@ def play_go2(headless=True):
     import os
 
     # label = "gait-conditioned-agility/pretrain-v0/train"
+    #label = "gait-conditioned-agility/2024-04-12/train"
     label = "gait-conditioned-agility/pretrain-go2/train"
 
 
@@ -133,12 +134,12 @@ def play_go2(headless=True):
              "pacing": [0, 0, 0.5]}
 
     # x_vel_cmd, y_vel_cmd, yaw_vel_cmd = 1.5, 0.0, 0.0
-    x_vel_cmd, y_vel_cmd, yaw_vel_cmd = 1.5, 0.0, 0.0
-    body_height_cmd = 0.0
-    step_frequency_cmd = 3.0 #3.0
+    x_vel_cmd, y_vel_cmd, yaw_vel_cmd = 0.7, 0.0, 0.0
+    body_height_cmd = 0.0 #0.0
+    step_frequency_cmd = 2.5 #3.0
     # gait = torch.tensor(gaits["trotting"])
     gait = torch.tensor(gaits["trotting"])
-    footswing_height_cmd = 0.08
+    footswing_height_cmd = 0.36 #0.08
     pitch_cmd = 0.0
     roll_cmd = 0.0
     stance_width_cmd = 0.25
